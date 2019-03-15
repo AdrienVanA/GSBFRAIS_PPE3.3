@@ -1,6 +1,11 @@
  
 <?php
-        
+        /*
+         * 15/03/2019
+         * Il faut donner effet au boutton REFUSE? via le <a> et sans affecter l'URL
+         * il faut pouvoir valider la fiche de frais
+         * On valide PUIS rembourse
+         */
    $month = $pdo->getMonths();
 $users= $pdo->getalluser();
 // $anuser = $_REQUEST['user'];
@@ -24,9 +29,16 @@ if (isset($_REQUEST['idFraisForfait'])){
 
 switch($action){
 	case 'utilisateurchoisis':{
-            $anuser= $pdo->getUser($user,$idFraisForfait,$mois);
+  //          $anuser= $pdo->getUser($user,$idFraisForfait,$mois);
+              $anuser= $pdo->getLesFraisForfait($user,$mois);
+              $horforfait = $pdo->getLesFraisHorsForfait($user,$mois);
             $usersMonth= $pdo-> dernierMoisSaisi($user);
-        $InfosFicheFrais2 =$pdo->getLesInfosFicheFrais($user,$mois);
+  //      $InfosFicheFrais2 =$pdo->getLesFraisForfait($user,$mois);
+        
+        $fraisForfaitEtape =0;
+         $fraisKilometrique =0;
+          $fraisHotel =0;
+           $fraisResto =0;
        
    include("vues/V_Notedefrais.php");
         

@@ -74,6 +74,8 @@ function dateServeurVersFrancais($maDate){
  
  * @param $date au format  jj/mm/aaaa
  * @return le mois au format aaaamm
+ * 
+ * MAJ 1 a remplacé / par -
 */
 function getMois($date){
 		@list($jour,$mois,$annee) = explode('/',$date);

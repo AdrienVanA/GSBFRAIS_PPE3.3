@@ -33,49 +33,81 @@
         
 	<dialog id="mydialog"  > 
  
-            <h1> <?php  echo $anuser[0]['nom'].'  '. $anuser[0]['prenom'] ?>   </h1>
+            <h1> introduire nom  & prenom ici   </h1>
               <div class="modal-body">
 
+                 
+             
+                  
                 <div class="form-group">
- <label for="montant">libelle</label>
- <input  readonly=""  type="text" id="montantfield" placeholder=" <?php  echo $anuser[0]['libelle'] ?> " class="form-control"/>
-
- <label for="status">montant</label>
- <input type="number"  type="text" id="status" placeholder="<?php  echo $anuser[0]['montant'] ?>   " class="form-control"/>
-                      </div>
-
+                    <form action="#" method="post"   >
+                        
+                 
+                    
+                   <?php
+                   
+                    $data = "<table >
+	 <tr>  <th>Frais forfaitaire   </th>
+	 <th>Quantite            </th>
+     <th> Montant  </th> <th> Total   </th> 
+	  </tr>";
+                   $grandtotal = 0 ;
+                   $ValidationMontant=0;
+                $BG2Color="#9999ff";
+                    
+                   foreach ($anuser as $user){
+                       
+                       $total = $user['quantite'] * $user['montant'];
+         $data .= " <tr bgcolor='#b3b3ff'  > <td>  ".$user['libelle']." "
+                 . " </td><td>  ".$user['quantite']." </td><td> ".$user['montant']." </td><td bgcolor='#9999ff'> $total </td>  </tr>";              
+              $grandtotal+=   $total;      
+              
+   
+                   }
+                   $data .= "<tr><td colspan='3' > Autres Frais</td> </tr> ";
+                 foreach ($horforfait as $unFrais){
+                        if($unFrais['montant']>0){
+                      $grandtotal+=   $unFrais['montant'];
+                    $data .=" <tr bgcolor='#b3b3ff'> <td> ".$unFrais['libelle']." </td><td>id: ".$unFrais['id'].
+  "</td><td> <a><button style='color:red;' id='refus'><b>Refuse? </b></button> </a> "
+                            
+                            . "</td> <td bgcolor='#9999ff'>".$unFrais['montant']."</td>"
+                            . " <td>    </td> </tr>";
+                      
+                   } 
+              }      
+                   
+                   
+                   
+                   $data .= "<tr bgcolor='#9999ff'> <td>Total</td> <td></td> <td></td> <td > $grandtotal</td>  </tr></table>";
+                   echo $data;
+                    ?> 
+       <input type="submit" value="recuperer">
+                    </form>
+                    
+                     <?php  
+                   
+ 
+if(isset($_POST['submit'])){//to run PHP script on submit
+if(!empty($_POST['horforfait'])){
+// Loop to store and display values of individual checked checkbox.
+foreach($_POST['horforfait'] as $selected){
+echo $selected."</br>";
+}
+}
+}
+ 
+                             ?> 
+                    
+              </div>
+                  
+                  
  <div class="form-group">
 <label for="status">status fiche de frais</label>
  
- 
+
     
-     <?php 
-     echo '<select name="statusfrais">';
-     if($InfosFicheFrais2['idEtat']=='CL'){
-     echo '  <option value="creee">Fiche créée, saisie en cours</option>
-  <option selected value="cloturee">Saisie clôturée</option>
-  <option value="Remboursee">Remboursée</option>
-  <option value="Validee"> Validée et mise en paiement</option>';
-     }else if($InfosFicheFrais2['idEtat']=='CR'){
-     echo '  <option selected value="creee">Fiche créée, saisie en cours</option>
-  <option value="cloturee">Saisie clôturée</option>
-  <option  value="Remboursee">Remboursée</option>
-  <option value="Validee"> Validée et mise en paiement</option>';
-     }else if($InfosFicheFrais2['idEtat']=='RB'){
-     echo '  <option value="creee">Fiche créée, saisie en cours</option>
-  <option value="cloturee">Saisie clôturée</option>
-  <option selected value="Remboursee">Remboursée</option>
-  <option value="Validee"> Validée et mise en paiement</option>';
-     }else if($InfosFicheFrais2['idEtat']=='VA'){
-     echo '  <option value="creee">Fiche créée, saisie en cours</option>
-  <option value="cloturee">Saisie clôturée</option>
-  <option value="Remboursee">Remboursée</option>
-  <option selected value="Validee"> Validée et mise en paiement</option>';
-     } 
-     echo "</select> ";
-           
-             ?>
-    
+
  
            
  </div>

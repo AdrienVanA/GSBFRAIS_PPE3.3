@@ -26,7 +26,7 @@ and open the template in the editor.
  
  $color = true;
     foreach ($users as $user) {
-        
+     if(date("Y/m")==dateServeurVersFrancais($user['mois'])){    
  $color= !$color ;
  if ($color){
      
@@ -35,6 +35,10 @@ and open the template in the editor.
  }else if ($color==false){
     $BGcolor = '#3FC9F9'; 
  }  
+ 
+
+     
+
  
  
         $data .= '<tr bgcolor="'.$BGcolor.'">
@@ -48,7 +52,9 @@ and open the template in the editor.
  <td>
  
 
- <a id="choice" href="index.php?uc=comptabilite&user='. $user['id'] .'&action=utilisateurchoisis&idFraisForfait='.$user['idFraisForfait'].'&mois='.$user['mois'].'" ><button>Modifier</button></a> 
+ <a id="choice" href="index.php?uc=comptabilite&user='. $user['id'] 
+ .'&action=utilisateurchoisis&idFraisForfait='.$user['idFraisForfait'].'&mois='.$user['mois']
+                .'" ><button>Modifier</button></a> 
  
  </td>  
  </tr>';
@@ -56,11 +62,13 @@ and open the template in the editor.
         
       
         
+    } 
     }
 $data .= '</table>';
-
+ 
 echo $data;   
-    
+ 
+ //  date("y/m") 
      
       /*
 	<script> 
