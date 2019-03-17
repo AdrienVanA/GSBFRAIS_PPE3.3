@@ -22,10 +22,13 @@ if (isset($_REQUEST['user'])){
 if (isset($_REQUEST['idFraisForfait'])){
   $idFraisForfait = $_REQUEST['idFraisForfait'];  
 }
-
+/*
 if (isset($_REQUEST['idFraisForfait'])){
   $mois = $_REQUEST['mois'];  
 }
+ *
+ */
+$mois= date("Ym");
 
 switch($action){
 	case 'utilisateurchoisis':{
@@ -35,10 +38,7 @@ switch($action){
             $usersMonth= $pdo-> dernierMoisSaisi($user);
   //      $InfosFicheFrais2 =$pdo->getLesFraisForfait($user,$mois);
         
-        $fraisForfaitEtape =0;
-         $fraisKilometrique =0;
-          $fraisHotel =0;
-           $fraisResto =0;
+  
        
    include("vues/V_Notedefrais.php");
         

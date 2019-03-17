@@ -46,7 +46,7 @@
                     
                    <?php
                    
-                    $data = "<table >
+                    $data = "<table width='500' >
 	 <tr>  <th>Frais forfaitaire   </th>
 	 <th>Quantite            </th>
      <th> Montant  </th> <th> Total   </th> 
@@ -55,6 +55,10 @@
                    $ValidationMontant=0;
                 $BG2Color="#9999ff";
                     
+                if( !isset($anuser[0]["quantite"])){
+                    echo "<b>Ce visiteur n'a pas encore remplit sa fiche de frais </b> </br>";
+                }
+
                    foreach ($anuser as $user){
                        
                        $total = $user['quantite'] * $user['montant'];

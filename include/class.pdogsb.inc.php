@@ -90,10 +90,8 @@ ON L.idFraisForfait = F.id  where V.id='$idVisiteur' and idFraisForfait='$idFrai
         
     public function getalluser( ){
  
-        $req="SELECT V.id as id, nom,prenom, F.libelle as libelle, F.montant as montant, mois, idFraisForfait
-from visiteur V INNER JOIN lignefraisforfait L 
-ON V.id=L.idVisiteur INNER JOIN fraisforfait F 
-ON L.idFraisForfait = F.id
+        $req="SELECT  id, nom, prenom
+from visiteur 
 ORDER BY nom,prenom  ASC
 ";
         

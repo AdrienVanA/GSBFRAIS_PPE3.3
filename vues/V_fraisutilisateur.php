@@ -16,17 +16,16 @@ and open the template in the editor.
          
  
  
- $data = "<table >
+ $data = "<table width='500' >
 	 <tr>  <th>Nom</th>
 	 <th>Prenom</th>
-     <th> Libelle </th> <th> Montant</th><th> Periode</th>
-	 <th> </th>  </tr>";
+     <th> Action </th>    </tr>";
 
   //  <button onclick="$dialog.showModal(); getLesInfosFicheFrais('.$user["id"].'","'.$month.'")">Ouvrir</button> 
  
  $color = true;
     foreach ($users as $user) {
-     if(date("Y/m")==dateServeurVersFrancais($user['mois'])){    
+   //  if(date("Y/m")==dateServeurVersFrancais($user['mois'])){    
  $color= !$color ;
  if ($color){
      
@@ -46,15 +45,12 @@ and open the template in the editor.
  
  <td>' . $user['nom'] . '</td>
  <td>' . $user['prenom'] . '</td>
-      <td>' . $user['libelle'] . '</td>
-           <td>' . $user['montant'] . '</td>
- <td>' . dateServeurVersFrancais($user['mois']) . '</td>
+
  <td>
  
 
  <a id="choice" href="index.php?uc=comptabilite&user='. $user['id'] 
- .'&action=utilisateurchoisis&idFraisForfait='.$user['idFraisForfait'].'&mois='.$user['mois']
-                .'" ><button>Modifier</button></a> 
+ .'&action=utilisateurchoisis" ><button style="width:100%" >Modifier</button></a> 
  
  </td>  
  </tr>';
@@ -62,13 +58,13 @@ and open the template in the editor.
         
       
         
-    } 
+ //   } 
     }
 $data .= '</table>';
  
 echo $data;   
- 
- //  date("y/m") 
+
+ //  date("Y/m") 
      
       /*
 	<script> 
