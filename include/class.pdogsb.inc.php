@@ -338,5 +338,23 @@ ORDER BY nom,prenom  ASC
 		where fichefrais.idvisiteur ='$idVisiteur' and fichefrais.mois = '$mois'";
 		PdoGsb::$monPdo->exec($req);
 	}
+        
+        
+ /**
+ * Modifiele montant validé et la date de modification d'une fiche de frais
+ 
+ * Modifie le champ Montantvalide et met la date de modif à aujourd'hui
+ * @param $idVisiteur 
+ * @param $mois sous la forme aaaamm
+ */
+ 
+	public function majMontantValideFicheFrais($idVisiteur,$mois,$montantValide){
+		$req = "update ficheFrais set montantValide = '$montantValide', dateModif = now() 
+		where fichefrais.idvisiteur ='$idVisiteur' and fichefrais.mois = '$mois'";
+		PdoGsb::$monPdo->exec($req);
+	}       
+        
+        
+        
 }
 ?>

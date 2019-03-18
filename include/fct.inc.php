@@ -85,6 +85,23 @@ function getMois($date){
 		return $annee.$mois;
 }
 
+/**
+ * Vérifie si le $string contient un substring $Contain
+ 
+ * @param le $string ,$Contain
+ * @return true ou false
+ * 
+*/
+function Contient($string, $Contain){
+		 $reponse = false;
+                 if(strpos($string, $Contain) !== false){
+                      $reponse = true;
+                 }
+                 
+                 
+		return $reponse;
+}
+
 /* gestion des erreurs*/
 /**
  * Indique si une valeur est un entier positif ou nul

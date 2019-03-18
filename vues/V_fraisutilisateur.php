@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Ce fichier affiche la liste des visiteurs qu'ils aient remplis
+leurs fiches de frais du mois ou non.
 -->
 <html>
     <head>
@@ -10,13 +9,12 @@ and open the template in the editor.
      
     </head>
     <body>
+        </br>
+        <button  style="width:90" onclick='HideShow()'><i id='BT_TXT' style="font-size:10" >Cacher la Liste</i></button>      
+        
 <?php    
- 
- 
-         
- 
- 
- $data = "<table width='500' >
+  
+ $data = "<table id='TABLE_USERLIST' style='display:block' width='500' >
 	 <tr>  <th>Nom</th>
 	 <th>Prenom</th>
      <th> Action </th>    </tr>";
@@ -41,19 +39,12 @@ and open the template in the editor.
  
  
         $data .= '<tr bgcolor="'.$BGcolor.'">
- 
- 
  <td>' . $user['nom'] . '</td>
  <td>' . $user['prenom'] . '</td>
-
  <td>
- 
-
  <a id="choice" href="index.php?uc=comptabilite&user='. $user['id'] 
  .'&action=utilisateurchoisis" ><button style="width:100%" >Modifier</button></a> 
- 
- </td>  
- </tr>';
+ </td> </tr>';
         
         
       
@@ -81,7 +72,33 @@ echo $data;
         
  
      
-        
+           <script>
+ var table = document.getElementById('TABLE_USERLIST')
+ var Txt = document.getElementById('BT_TXT')
+  var ListBool = new Boolean(1); HideShow();
+ function HideShow(){
+
+  if(ListBool){
+       table.style.display = "none";
+       Txt.innerHTML ='Ouvrir la liste'
+       ListBool=false;
+  }else{
+     table.style.display = "block";  
+      Txt.innerHTML ='Cacher la liste'
+      ListBool=true;
+  }
+      }
+     
+function SetBool( T){
+    if(T==true){
+        ListBool=true;
+    }else{
+        ListBool=false; 
+    }
+}
+           
+          
+           </script>       
 
  
 

@@ -4,7 +4,7 @@
       <form action="index.php?uc=etatFrais&action=voirEtatFrais" method="post">
       <div class="corpsForm">
          
-      <p>
+      <p> 
 	 
         <label for="lstMois" accesskey="n">Mois : </label>
         <select id="lstMois" name="lstMois">
