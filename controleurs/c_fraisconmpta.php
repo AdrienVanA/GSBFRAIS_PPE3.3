@@ -181,8 +181,8 @@ $lesMois=$pdo->getLesMoisDisponibles($Theuser);
         
      echo $montantValide;     
         
-    //    $pdo->   majMontantValideFicheFrais($Theuser,$mois,$montantValide);
-    //   $pdo->   majEtatFicheFrais($Theuser,$mois,'VA');
+         $pdo->   majMontantValideFicheFrais($Theuser,$mois,$montantValide);
+        $pdo->   majEtatFicheFrais($Theuser,$mois,'VA');
        
        break;
         }
