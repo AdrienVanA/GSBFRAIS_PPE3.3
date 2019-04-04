@@ -24,6 +24,11 @@ switch($uc){
 	case 'comptabilite' :{
 		include("controleurs/c_fraisconmpta.php");break; 
 	}
+        
+ 	case 'test' :{
+		include("controleurs/c_test.php");break; 
+	}      
+        
 }
 
         
