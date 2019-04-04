@@ -9,7 +9,8 @@
  
 </head> 
 <body> 
-       <div id='Notefrais' align="center">            
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <div id='Notefrais' align="center">            
                    <?php
      //  set le nom du visiteur selectionné    
         foreach ($users as $theone){
@@ -99,7 +100,7 @@
                        
          $data .= " <tr bgcolor='#b3b3ff'  > <td>  ".$user['libelle']." "
                  . " </td><td> "
-                 . "<input    id='InputQuantite' type='text' name='userQuantite[".$user['idfrais']."]' value='".$user['quantite']."'>  "
+                 . "<input    class='InputQuantite' type='text' name='userQuantite[".$user['idfrais']."]' value='".$user['quantite']."'>  "
                  . "</td><td> ".$user['montant'].
                  " </td><td bgcolor='#9999ff'> $total </td>  </tr>";              
               $grandtotal+=   $total;      
@@ -145,7 +146,8 @@
                    
  if(($InfosFicheFrais['idEtat']=='RB')||($InfosFicheFrais['idEtat']=='VA')){
  ?>  <script> 
- document.getElementById('InputQuantite').readOnly = true;
+     $(".InputQuantite").attr('readonly', true);
+
 </script>
  
      <?php 
