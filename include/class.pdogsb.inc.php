@@ -40,6 +40,14 @@ class PdoGsb{
  
  * @return l'unique objet de la classe PdoGsb
  */
+        
+        
+        
+        
+        
+        
+        
+        
 	public  static function getPdoGsb(){
 		if(PdoGsb::$monPdoGsb==null){
 			PdoGsb::$monPdoGsb= new PdoGsb();
@@ -87,6 +95,25 @@ ON L.idFraisForfait = F.id  where V.id='$idVisiteur' and idFraisForfait='$idFrai
         return $resul;
     }    
         
+    
+    public function GetFrais($idVisiteur){
+             $req="SELECT  mois, quantite,montant
+from lignefraisforfait L inner join fraisforfait F
+on L.idFraisForfait = F.id
+where  idVisiteur='".$idVisiteur."' and quantite  != 0";
+        
+        $query = PdoGsb::$monPdo->query($req);
+        $resul = $query->fetchAll();
+	 
+        return $resul; 
+        
+        
+    }
+    
+    
+    
+    
+    
         
     public function getalluser( ){
  
@@ -167,6 +194,45 @@ ORDER BY nom,prenom  ASC
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 	}
+        
+        
+        
+        
+ /**
+ *  prend les données de ligneforfait et fraisforfait
+  *  
+ 
+ * @return renvoi le nbr de fiche et le montant de la categorie et mois données.
+  * neccessite IDfraisforfait et mois 
+*/
+	public function getNombreFiche($mois,$idfraisforfait){
+		$req = "SELECT COUNT(idVisiteur) as 'Nombrefiche'
+                    FROM `lignefraisforfait` WHERE mois='$mois' and idFraisForfait='$idfraisforfait'";
+                
+		$res = PdoGsb::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}       
+        
+  /**
+ *  prend les données de ligneforfait et fraisforfait
+  *  
+ 
+ * @return renvoi le nbr de fiche et le montant de la categorie et mois données.
+  * neccessite IDfraisforfait et mois 
+*/
+	public function getTotal($mois,$idfraisforfait){
+		$req = "SELECT  sum(quantite* montant) as total
+                    FROM lignefraisforfait L join fraisforfait F
+                    ON L.idFraisForfait=F.id                    
+                    WHERE mois='$mois' and idFraisForfait='$idfraisforfait'";
+                
+		$res = PdoGsb::$monPdo->query($req);
+		$lesLignes = $res->fetchAll();
+		return $lesLignes;
+	}         
+ 
+              
 /**
  * Met à jour la table ligneFraisForfait
  

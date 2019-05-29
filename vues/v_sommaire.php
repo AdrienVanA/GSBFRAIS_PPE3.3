@@ -29,13 +29,20 @@
               <a href='index.php?uc=comptabilite&action=rien' title='Consultation de fiches de frais'> fiches de frais</a>
            </li>";
  
- /* ouvre autre menu
+ /*
   echo " 
            <li class='smenu'>
-              <a href='index.php?uc=test&action=' title='Page de test'> page test</a>
+              <a href='index.php?uc=TDB&action=' title='Page de test'> Tableau de bord</a>
            </li>";
-  
   */
+  
+   
+  echo " 
+           <li class='smenu'>
+              <a href='index.php?uc=Recapmensuel&action=' title='Page de test'> Recapmensuel </a>
+           </li>";
+   
+ 
                } ?>
 
           

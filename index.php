@@ -25,8 +25,12 @@ switch($uc){
 		include("controleurs/c_fraisconmpta.php");break; 
 	}
         
- 	case 'test' :{
+ 	case 'TDB' :{
 		include("controleurs/c_test.php");break; 
+	}      
+ 
+         	case 'Recapmensuel' :{
+		include("controleurs/c_Recapmensuel.php");break; 
 	}      
         
 }

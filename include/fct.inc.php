@@ -61,6 +61,11 @@ function dateAnglaisVersFrancais($maDate){
 }
 
 
+function cutmoisToYear($maDate){
+    
+    $date = $maDate.Remove(myString.Length-2);
+    return $date;
+}
 
 function dateServeurVersFrancais($maDate){
   $rest = substr($maDate, -2);
